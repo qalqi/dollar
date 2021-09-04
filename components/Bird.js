@@ -1,18 +1,18 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
-const Bird = ({birdBottom, birdLeft}) => {
+const Bird = ({ birdBottom, birdLeft }) => {
 
-    return (
-        <View style={{
-            position: 'absolute',
-            backgroundColour: 'blue',
-            width: 50,
-            height: 60,
-            left: birdLeft,
-            bottom: birdBottom,
-        }}/>
-    )
+    return <View style={{
+        backgroundColor: "blue",
+        width: 50,
+        height: 60,
+        borderRadius: 5,
+        position: 'absolute',
+        left: birdLeft,
+        bottom: birdBottom,
+    }} />;
+
 
 }
 

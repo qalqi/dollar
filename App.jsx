@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import Bird from './components/Bird';
-import Obstacles from './components/Obstacles';
+import Bird from "./components/Bird";
+import Obstacles from "./components/Obstacles";
 
 export default function App() {
   const screenWidth = Dimensions.get("screen").width;
   const screenHeight = Dimensions.get("screen").height;
   const birdLeft = screenWidth / 2;
   const [birdBottom, setBirdBottom] = useState(screenHeight / 2);
-  const [obstaclesLeft, setObstaclessLeft] = useState(screenWidth)
-  const obstacleWidth = 60
-  const obstacleHeight =300
-  const gap = 50
+  const [obstaclesLeft, setObstaclessLeft] = useState(screenWidth);
+  const obstacleWidth = 60;
+  const obstacleHeight = 300;
+  const gap = 50;
   const gravity = 3;
   let gameTimmerId;
-  let ObstacLesLeftTimerId
+  let obstacLesLeftTimerId;
 
   //start bird falling
   useEffect(() => {
@@ -29,30 +29,27 @@ export default function App() {
     }
   }, [birdBottom]);
 
-
   //start first obstacles
   useEffect(() => {
     if (obstaclesLeft > 0) {
-      setInterval(() => {
-        setObstaclessLeft(obstaclesLeft- 5)
-      },30)
+      obstacLesLeftTimerId = setInterval(() => {
+        setObstaclessLeft((obstaclesLeft) => obstaclesLeft - 5);
+      }, 30);
     }
 
-  return () => {
-    clearInterval(obstaclesLeft)
-  }
-
-  }, [obstaclesLeft])
-
+    return () => {
+      clearInterval(obstacLesLeftTimerId);
+    };
+  }, [obstaclesLeft]);
 
   return (
     <View style={styles.container}>
       <Bird birdBottom={birdBottom} birdLeft={birdLeft} />
       <Obstacles
-        obstacleWidth= {obstacleWidth}
-        obstacleHeight= {obstacleHeight}
-        gap= {gap}
-        obstaclesLeft= {obstaclesLeft}
+        obstacleWidth={obstacleWidth}
+        obstacleHeight={obstacleHeight}
+        gap={gap}
+        obstaclesLeft={obstaclesLeft}
       />
     </View>
   );
@@ -66,4 +63,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-

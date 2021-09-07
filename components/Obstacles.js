@@ -17,7 +17,7 @@ const Obstacles = ({
                 position: 'absolute',
                 backgroundColor: color,
                 width: obstacleWidth,
-                height: obstacleHeight,
+                height: 500,
                 left: obstaclesLeft,
                 bottom: randomBottom + obstacleHeight + gap,
             }} />
